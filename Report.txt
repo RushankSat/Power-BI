@@ -1,0 +1,142 @@
+Hello I am Rushank Satardekar and I have started 1 month Power BI DAX learn task in hand.
+
+25-11-2023
+Yesterday I had Interview for Addend Analytics and they have asked me to learn Power BI with DAX language.
+
+They have also given me Resource to learn Power BI from its a Youtube channel name "Crubal" and I have started a Playlist name "DAX Friday".
+
+#1 Its about writing a simple DAX measure in Power BI.
+    Measure In Power BI, measures are used to perform calculations on your data and display the results in your reports and dashboards.
+    Measures are created using the DAX (Data Analysis Expressions) language.
+
+    eg. Measure = CALCULATE(COUNTA(DimGeo[City ID]),
+                              DimGeo[Country])="Sweden"
+                              )
+    COUNTA is used because City ID datatype was not  integer.
+
+
+27-11-2023
+
+Today I have started with DAX functions with Northwind Dataset
+#2 Calander() and Calanderauto()
+
+    Calenderauto is function which generate a column with continious dates from Dataset.
+    Its Returns a table with a single column named "Date" that contains a contiguous set of dates.
+    The range of dates is calculated automatically based on data in the model.
+
+    eg. dates = CALANDERAUTO()
+
+    Calander is function with Expressions in it start date and end date.
+    Its Returns a table with a single column named "Date" containing a contiguous set of dates.
+    The range of dates is from the specified start date to the specified end date, inclusive of those two dates.
+
+    eg. dates = Calaculate(12/01/2011,12/02/2011)
+
+    We can make a table with many columns like weekdays,yearQty...etc.
+
+    eg. DimDate = ADDCOLUMNS(CALENDAR(
+        DATE(YEAR(MIN(Orders[OrderDate])), 1, 1),
+        DATE(YEAR(MAX(Orders[OrderDate])), 12, 1)), "DateAsInteger", FORMAT ( [Date], "YYYYMMDD" ), "Year", YEAR ( [Date] ), "MonthNo", FORMAT ( [Date], "MM" ), "YearMonthNo", FORMAT ( [Date], "YYYY/MM" ), "YearMonth", FORMAT ( [Date], "YYYY/mmm" ), "MonthShort", FORMAT ( [Date], "mmm" ), "MonthLong", FORMAT ( [Date], "mmmm" ), "WeekNo", WEEKDAY ( [Date] ), "WeekDay", FORMAT ( [Date], "dddd" ), "WeekDayShort", FORMAT ( [Date], "dddd" ), "Quarter", "Q" & FORMAT ( [Date], "Q" ), "YearQuarter", FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date],"Q" )
+)
+
+    This function can be very useful for  time-related analysis and reporting.
+  #3 Sum() and Sumx()
+
+    Sum() is function which is use to calculate total value of column.
+    Its Adds all the numbers in a column.
+
+    Syntax:- SUM(Column Name)
+
+    eg. Total Sales = SUM(Order_Details[TotSalesColumn])
+
+    SUMX() is function which is use to calculate each row in a table.
+    Its returns the sum of an expression evaluated for each row in a table.
+
+    Syntax:- SUMX(Table,Expression)
+
+    eg. Total Sales X = SUMX(Order_Details,Order_Details[UnitPrice]*(1-Order_Details[Discount])*Order_Details[Quantity])
+
+    Difference Between SUM and SUMX is that sum is Vertical count function while SUMX is Horizontal count function.
+    eg. Addition of one column is done by SUM while Addition with other expression of each row in table is SUMX.
+
+  #4 Calculated Column and Measures
+  Calculated column are columns which get added to table with an operation with data.
+
+  Calculated Column is stored with table its the new column is table.
+  Measures does not consume memory and perform operation which can be use dynamically.
+
+
+  In real life scenario calculated column can be created if we want another column from it.
+  eg. Want to categories a sales discount5% calculated column  into high discount or low discount.
+
+
+  28-11-2023
+
+  Today I am #4 video of DAX friday series with functions
+
+  #1 *COUNT() is function to calculate number of rows
+     Its Counts the number of rows in the specified column that contain non-blank values.
+
+     Syntx:- COUNT(Columnname)
+
+     eg. COUNT = COUNT(Table1[ProductID])
+
+     *COUNTA() is function to calculate number of rows but with both numerical and text values.
+     Its Counts the number of rows in the specified column that contain non-blank values.
+
+     Syntax:- COUNTA(columnname)
+
+     eg. COUNTA = COUNTA(Table1[ProductName])
+
+     note:- if we COUNTA a blank column it would result in "(Blanks)".
+            Date is consider numerical in Power BI and excel.
+
+     *COUNTX is function which calculate values from table.
+     Its Counts the number of rows that contain a non-blank value or an expression that evaluates to a non-blank value,
+     when evaluating an expression over a table.
+
+     Syntax:- COUNTX(Table,Expressions)
+
+     eg. COUNTX: = COUNTX(FILTER(Table1,[StockQty]>100),Table1[ProductID])
+
+     *COUNTAX
+     Its The COUNTAX function counts non-blank results when evaluating the result of an expression over a table.
+     That is, it works just like the COUNTA function, but is used to iterate through the rows in a table and count rows
+      where the specified expressions results in a non-blank result.
+
+      Syntax:- COUNTAX(Table,Expressions)
+
+      eg. COUNTAX = COUNTAX(FILTER(Table1,[StockQty]>100),Table1[ProductName])
+
+      *DISTINCTCOUNT() is function which show distinct values from Columns.
+      Its Counts the number of distinct values in a column.
+
+      Syntax: - DISTINCTCOUNT(Column)
+
+      *DISTINCTCOUNT with Expression
+      Its function to filter value from Table
+
+      eg. DISTINCTCOUNTwEXP = COUNTROWS(DISTINCT(Table1[StockLocation]))
+
+
+      *COUNTBLANK is function which count blank rows.
+      Its Counts the number of blank cells in a column.
+
+      Syntax:- COUNTBLANK(column)
+
+      eg. COUNTBLANK = COUNTBLANK(Table1[StockLocation])
+
+      *COUNTROWS() is function to calculate rows in table.
+      Its The COUNTROWS function counts the number of rows in the specified table, or in a table defined by an expression.
+
+      Syntax: - COUNTROWS([<table>])
+
+      eg. COUNTROWS = COUNTROWS(Table1)
+
+      *COUNTROWS with Expressions function is use to modify the table before performing count operation on table.
+
+      Syntax: - COUNTROWS([<table>])
+
+      eg. COUNTROWSwEXP = COUNTROWS(FILTER(Table1,Table1[StockLocation]="EMEA")).
+
+      Note:- COUNTROWS function does not support columns.
