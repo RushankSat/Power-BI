@@ -156,3 +156,6 @@ Today I have started with DAX functions with Northwind Dataset
       Note:- FILTER in calculate work as only value which is required but when new filter are add it start giving important to new filter.
 
       eg. CAL w FILTER TotSales = CALCULATE([SUM TotSales],Products[ProductName]="Queso Cabrales")
+
+      Real life example to use calculate function is when to calculate percentage of sales of overall sales.
+      
