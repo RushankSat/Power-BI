@@ -140,3 +140,19 @@ Today I have started with DAX functions with Northwind Dataset
       eg. COUNTROWSwEXP = COUNTROWS(FILTER(Table1,Table1[StockLocation]="EMEA")).
 
       Note:- COUNTROWS function does not support columns.
+
+
+    #2
+      *CALCULATE() its a function that uses to calculate different expression with filters.
+      Its Evaluates an expression in a modified filter context.
+
+      Syntax:- CALCULATE(<expression>[, <filter1> [, <filter2> [, …]]])
+
+      eg. CAL TotSales = CALCULATE([SUM TotSales])
+
+
+      *FILTER() is a function which filter the table with condition
+
+      Note:- FILTER in calculate work as only value which is required but when new filter are add it start giving important to new filter.
+
+      eg. CAL w FILTER TotSales = CALCULATE([SUM TotSales],Products[ProductName]="Queso Cabrales")
