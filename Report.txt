@@ -158,4 +158,58 @@ Today I have started with DAX functions with Northwind Dataset
       eg. CAL w FILTER TotSales = CALCULATE([SUM TotSales],Products[ProductName]="Queso Cabrales")
 
       Real life example to use calculate function is when to calculate percentage of sales of overall sales.
-      
+
+
+30-11-2023
+
+    #1
+      FILTER()
+      Its Returns a table that represents a subset of another table or expression.
+
+      Syntax:- FILTER(<table>,<filter>)
+
+      eg.FILTER(ProductData,ProductData[ProductCategory]="Mountain Bikes")
+
+
+    #2
+      All() ALLEXCEPT()
+
+      *ALL()
+      Its Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied.
+       This function is useful for clearing filters and creating calculations on all the rows in a table.
+
+       Syntax:- ALL( [<table> | <column>[, <column>[, <column>[,…]]]] )
+
+       eg. ALL(Order_Details,Categories[CategoryID])
+
+       *ALLEXCEPT()
+       Its Removes all context filters in the table except filters that have been applied to the specified columns.
+       Its Returns a table with all filters removed except for the filters on the specified columns.
+
+       Syntax:- ALLEXCEPT(<table>,<column>[,<column>[,…]])
+
+       eg. ALLEXCEPT(Order_Details,Categories[CategoryID],Categories[CategoryName])
+
+      #3
+        CALCULATE(FILTER())
+          Filter is used in calculate to filter the table first then perform calculate operation(Measure)
+
+          eg. CALwFilter = CALCULATE([SUM of Total Sales],FILTER(FilterProductTable,FilterProductTable[ProductName]="Queso Cabrales"))
+
+          Note:- Calculate function would give error when filter table has measures it would only take column with condition of Number and Text.
+
+        CALCULATE(FILTER(ALL()))
+          ALL in calculate() would select all column from table in the filter table then calculate would work. It same as calculate with condition.
+
+          eg. CALwFilterwALL = CALCULATE([SUM of Total Sales],FILTER(ALL(FilterProductTable),FilterProductTable[ProductName]="Queso Cabrales"))
+
+        Note:- multiple expression with ||
+          eg. CALwFilter = CALCULATE([SUM of Total Sales],FILTER(FilterProductTable,FilterProductTable[ProductName]="Queso Cabrales"
+          || FilterProductTable[ProductName]="Gorgonzbla Telino"))
+
+      #4
+        SUM() vs SUMX() vs CALCULATE()
+
+        If you ask 12 year boy to calculate total apples if there are 5 apples on each tree and there are 10 trees.Boy would do 5*10=50 that is SUM(no.apple).
+        If that same question to 5 year girl she would calculate like 5+5+5+5......=50 that is SUMX(Garden,Garden[no.apple]*[no.tree])+0.
+        And if you have created a measure for no.apple and don't want to disturb the structure of table and add more condition like apple_color is Green and etc thatis CALCULATE([no of apples],FILTER(Garden,Garden[apple_color]="Green")) 
