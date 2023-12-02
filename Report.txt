@@ -1,4 +1,5 @@
-Hello I am Rushank Satardekar and I have started 1 month Power BI DAX learn task in hand.
+
+Hello I am Rushank Satardekar and I have started 1 month Power BI DAX learn task.
 
 25-11-2023
 Yesterday I had Interview for Addend Analytics and they have asked me to learn Power BI with DAX language.
@@ -20,7 +21,7 @@ They have also given me Resource to learn Power BI from its a Youtube channel na
 Today I have started with DAX functions with Northwind Dataset
 #2 Calander() and Calanderauto()
 
-    Calenderauto is function which generate a column with continious dates from Dataset.
+    Calenderauto is function which generate a column with continuous dates from Dataset.
     Its Returns a table with a single column named "Date" that contains a contiguous set of dates.
     The range of dates is calculated automatically based on data in the model.
 
@@ -30,7 +31,7 @@ Today I have started with DAX functions with Northwind Dataset
     Its Returns a table with a single column named "Date" containing a contiguous set of dates.
     The range of dates is from the specified start date to the specified end date, inclusive of those two dates.
 
-    eg. dates = Calaculate(12/01/2011,12/02/2011)
+    eg. dates = CALENDAR(DATE(2014,01,01),DATE(2014,12,31))
 
     We can make a table with many columns like weekdays,yearQty...etc.
 
@@ -212,4 +213,16 @@ Today I have started with DAX functions with Northwind Dataset
 
         If you ask 12 year boy to calculate total apples if there are 5 apples on each tree and there are 10 trees.Boy would do 5*10=50 that is SUM(no.apple).
         If that same question to 5 year girl she would calculate like 5+5+5+5......=50 that is SUMX(Garden,Garden[no.apple]*[no.tree])+0.
-        And if you have created a measure for no.apple and don't want to disturb the structure of table and add more condition like apple_color is Green and etc thatis CALCULATE([no of apples],FILTER(Garden,Garden[apple_color]="Green")) 
+        And if you have created a measure for no.apple and don't want to disturb the structure of table and add more condition like apple_color is Green and etc thatis CALCULATE([no of apples],FILTER(Garden,Garden[apple_color]="Green"))
+
+
+    01-12-2023
+      # Download A Dataset and Load in power BI
+      # Done with Modeling and Transform.
+      # Create New table for Data with Calendar and CALANDERAUTO
+
+     02-12-2023
+      # Use Dax for Total Sales and Total QTY with Sum and SUMX.
+      # Found the difference between SUMX and CALCULATE
+      # Use COUNTAX and COUNT To show Total product.
+      # Use Filter function ALL and ALLEXCEPT with example.
