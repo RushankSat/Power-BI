@@ -226,3 +226,72 @@ Today I have started with DAX functions with Northwind Dataset
       # Found the difference between SUMX and CALCULATE
       # Use COUNTAX and COUNT To show Total product.
       # Use Filter function ALL and ALLEXCEPT with example.
+
+05-12-2023
+  Today I have started new function that is RANKX()
+
+  #1
+    RANKX()
+    It Returns the ranking of a number in a list of numbers for each row in the table argument.
+
+
+    Syntax:- RANKX(<table>, <expression>[, <value>[, <order>[, <ties>]]])
+
+    eg:- CategoryRank1 = RANKX(ALL(Categories),[Total Sales],,DESC)
+
+    ALLSELECTED()
+    It Removes context filters from columns and rows in the current query, while retaining all other context filters or explicit filters.
+    The ALLSELECTED function gets the context that represents all rows and columns in the query,
+    while keeping explicit filters and contexts other than row and column filters.
+    This function can be used to obtain visual totals in queries.
+
+    Syntax:- ALLSELECTED([<tableName> | <columnName>[, <columnName>[, <columnName>[,…]]]] )
+
+    eg. wNoBlankSelectedCategoryRank1 = IF(NOT(ISBLANK([Total Sales])),RANKX(ALLSELECTED(Categories),[Total Sales],,0),BLANK())
+
+  #2
+    RANKX() with TOPN Slicer
+      First we created slicer with a table of TOPN.
+      Than we use IF function to get HASONEVALUE() from slicer value.
+      Than we compare HASONEVALUE() with RANK functions and gives AVG value.
+
+      eg. MachineAvgRank = RANKX(All(data[Operator]),[Avg Value],,DESC)
+          SelectedRank = IF(HASONEVALUE('TopN'[TopName]), VALUES('TopN'[TopN]),BLANK())
+          AvgMeasurentValue = IF([MachineAvgRank]<=[SelectedRank],[Avg Value])
+
+      We can click on slicer and as per button we get values on table.
+
+      IF()
+        Checks a condition, and returns one value when it's TRUE, otherwise it returns a second value.
+
+        Syntax:- IF(<logical_test>, <value_if_true>[, <value_if_false>])
+
+        eg.   SelectedRank = IF(HASONEVALUE('TopN'[TopName]), VALUES('TopN'[TopN]),BLANK())
+
+        Return Either value_if_true, value_if_false, or BLANK.
+
+
+        #3
+        How to create Variable in  DAX.
+        We can use variable to store value or a DAX.
+
+        Syntax:- Var <VariableName> =
+                  Expression
+
+                  Return
+                  name
+
+        eg. Var Total_sales_India =
+                SUMX([Total Sales],Filter(Data['Country']='India'))
+            Var Total_sales_Australia =
+                        SUMX([Total Sales],Filter(Data['Country']='Australia'))
+
+            Return
+
+            IF(HASONEVALUE(Data[Country]),
+                IF VALUES(Data[Country]) = "Australia",
+                    Total_sales_Australia,
+                    Total_sales_India
+                    ),
+                BLANK()
+                )
