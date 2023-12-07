@@ -295,3 +295,17 @@ Today I have started with DAX functions with Northwind Dataset
                     ),
                 BLANK()
                 )
+
+
+7/12/2023
+
+        #1 Distinct Sum
+
+        It can be achieve by 2 measure :
+
+        Max_tooling_value = MAX(Table1[Budget Cost Tool])
+        Corrent Distinct SUM = SUMX(DISTINCT(Table1[PartDenom]),Max_tooling value)
+
+        We need to first create measure to calculate max value from column then use that measure to SUMX() Distinct Product.
+
+        
