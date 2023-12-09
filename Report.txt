@@ -308,4 +308,43 @@ Today I have started with DAX functions with Northwind Dataset
 
         We need to first create measure to calculate max value from column then use that measure to SUMX() Distinct Product.
 
+
+9/12/2023
+        I started with DAX 25 Days Challenge with curbal
+
+        # It had its own modified various of North Wind Dataset.The format was Each day one question.
+        The first question was from Product table with Count of current product with less than 20 $ value.
+
+        Dax:- Productless20 = CALCULATE(COUNT(Products[ProductID]),FILTER(Products,Products[Unit Price]<20))
+
+        My DAX was for Product value less than 20 but I forget the tricky part which was current.To know about that I should have gone through North Wind Dataset.
+        The Dataset has a column Discontinued which has boolen value.
+
+        Corrent DAX:- Productless20 = CALCULATE(COUNT(Products[ProductID]),FILTER(Products,Products[Unit Price]<20),Products[Discontinued]=FALSE())
+
+        # Day 2 Challenge was Most Expensive product.
+
+        DAX:- MostExpensiveProduct = CALCULATE(DISTINCT(Products[ProductName]),FILTER(Products,Products[UnitPrice]=MAX(Products[UnitPrice])))
+
+        My DAX was also right but Curbal gave one more solution.
+
+        DAX:- Day 2 = CALCULATE(SELECTEDVALUE(Products[ProductName]),TOPN(1,Products,Products[UnitPrice],DESC))
+
+        Got to know about 2 function SELECTEDVALUE() and TOPN()
+
+        #1 SELECTEDVALUE()
+        Returns the value when the context for columnName has been filtered down to one distinct value only. Otherwise returns alternateResult.
+
+        Syntax:- SELECTEDVALUE(<columnName>[, <alternateResult>])
+
+        Eg. SELECTEDVALUE(Product[ProductName],MAX(Product[UnitPrice]))
+
+        #2 TOPN()
+        Returns the top N rows of the specified table.
+
+        If you have use Python Pandas than pd.head() will return same values.
+
+        Syntax: - TOPN(<N_Value>, <Table>, <OrderBy_Expression>, [<Order>[, <OrderBy_Expression>, [<Order>]]…])
+
+        eg. TOPN(1,Products,Products[UnitPrice],DESC) --In new Table
         
