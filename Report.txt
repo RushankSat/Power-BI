@@ -347,4 +347,11 @@ Today I have started with DAX functions with Northwind Dataset
         Syntax: - TOPN(<N_Value>, <Table>, <OrderBy_Expression>, [<Order>[, <OrderBy_Expression>, [<Order>]]…])
 
         eg. TOPN(1,Products,Products[UnitPrice],DESC) --In new Table
-        
+
+
+11/12/2023
+
+        Completed till DAY 5 DAX Challenge.
+
+        The Challenge was based on DAX friday learning.
+        with function like CALACULATE(),COUNTAX() and var.
