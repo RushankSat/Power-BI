@@ -355,3 +355,44 @@ Today I have started with DAX functions with Northwind Dataset
 
         The Challenge was based on DAX friday learning.
         with function like CALACULATE(),COUNTAX() and var.
+
+
+12/12/2023
+        #1 SUMMARIZE()
+        Returns a summary table for the requested totals over a set of groups.
+
+        Syntax:- SUMMARIZE (<table>, <groupBy_columnName>[, <groupBy_columnName>]…[, <name>, <expression>]…)
+
+        A table with the selected columns for the groupBy_columnName arguments and the summarized columns designed by the name arguments.
+
+        eg. SUMMARIZE(Orders,Orders[OrderID],"ProdCount",COUNTA(Orders[ProductID])
+
+        I learn this function while solving DAX challenge DAY 6
+
+        To perform DAY 6 use AVERAGEX() with SUMMARIZE() To get group BY by order ID of Product ID Count
+
+        TO perform DAY 7 CALCULATE() with FILTER() and ISBLANK()
+
+        #2 HASONEVALUE()
+        Returns TRUE when the context for columnName has been filtered down to one distinct value only. Otherwise is FALSE.
+
+        Syntax:- HASONEVALUE(<columnName>)
+
+        eg.HASONEVALUE(Orders[OrderID])
+
+        #3 VALUES()
+        When the input parameter is a column name, returns a one-column table that contains the distinct values from the specified column.
+        Duplicate values are removed and only unique values are returned. A BLANK value can be added.
+        When the input parameter is a table name, returns the rows from the specified table. Duplicate rows are preserved. A BLANK row can be added.
+
+        Syntax:- VALUES(<TableNameOrColumnName>)
+
+        When the input parameter is a column name, a single column table. When the input parameter is a table name,
+        a table of the same columns is returned.
+
+        eg. VALUES(Orders[OrderID]
+
+        To perform DAY 8 curbal has 2 method
+        - use VAR to create count of productID and than calculate order id with filter of var = 1 then Create another measure with
+        IF(), HASONEVALUE(),SUMX() and VALUE()
+        - use COUNTROWS() with SUMMARIZE() and FILTER().
