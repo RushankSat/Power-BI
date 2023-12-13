@@ -213,7 +213,8 @@ Today I have started with DAX functions with Northwind Dataset
 
         If you ask 12 year boy to calculate total apples if there are 5 apples on each tree and there are 10 trees.Boy would do 5*10=50 that is SUM(no.apple).
         If that same question to 5 year girl she would calculate like 5+5+5+5......=50 that is SUMX(Garden,Garden[no.apple]*[no.tree])+0.
-        And if you have created a measure for no.apple and don't want to disturb the structure of table and add more condition like apple_color is Green and etc thatis CALCULATE([no of apples],FILTER(Garden,Garden[apple_color]="Green"))
+        And if you have created a measure for no.apple and don't want to disturb the structure of table and add more condition like
+         apple_color is Green and etc thatis CALCULATE([no of apples],FILTER(Garden,Garden[apple_color]="Green"))
 
 
     01-12-2023
@@ -396,3 +397,26 @@ Today I have started with DAX functions with Northwind Dataset
         - use VAR to create count of productID and than calculate order id with filter of var = 1 then Create another measure with
         IF(), HASONEVALUE(),SUMX() and VALUE()
         - use COUNTROWS() with SUMMARIZE() and FILTER().
+
+13/12/2023
+        #1 In DAX Day 9 learn about DISTINCT VALUE using VALUES() and then FILTER() with AVERAGEX() and CALCULATE().
+
+        #2 LASTDATE()
+        Returns the last date in the current context for the specified column of dates.
+
+        Syntax:-LASTDATE(<dates>)
+
+        eg. LASTDATE(Orders[OrderDate])
+
+        A table containing a single column and single row with a date value.
+
+        #3 DATEDIFF()
+        Returns the number of interval boundaries between two dates.
+
+        syntax:-DATEDIFF(<Date1>, <Date2>, <Interval>)
+
+        eg. DATEDIFF(lastdatepur,TODAY(),DAY)
+
+        The count of interval boundaries between two dates.
+
+        DAX Day 10 use LASTDATE() to find last purchased and Then DATEDIFF() to find number of Days.
