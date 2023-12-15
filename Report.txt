@@ -420,3 +420,45 @@ Today I have started with DAX functions with Northwind Dataset
         The count of interval boundaries between two dates.
 
         DAX Day 10 use LASTDATE() to find last purchased and Then DATEDIFF() to find number of Days.
+
+
+15/12/2023
+        #1 IN DAX Day 11 use COUNTROWS(),SUMMARIZE(),COUNTA()
+
+        #2 DATE()
+        Returns the specified date in datetime format.
+
+        Syntax:- DATE(<year>, <month>, <day>)
+
+        eg. DATE(YEAR(TODAY()),1,1)
+
+        Returns the specified date (datetime).
+
+        #3 FIRSTNONBLANKVALUE()
+        Evaluates an expression filtered by the sorted values of a column and returns the first value of the expression that is not blank.
+
+        Syntax:- FIRSTNONBLANKVALUE(<column>, <expression>)
+
+        eg.FIRSTNONBLANKVALUE(Orders[CustomerID],MIN(Orders[OrderDate]))
+
+        The first non-blank value of <expression> corresponding to the sorted values of <column>.
+
+        With DATE(),FIRSTNONBLANKVALUE() and SUMMARIZE() solved DAX Day 12.
+
+        #EXCEPT()
+        Returns the rows of the first table in the expression which do not appear in the second table.
+
+        Syntax:-EXCEPT(<table_expression1>, <table_expression2>)
+
+        eg. EXCEPT(totalcustomer,QCCustomer)
+
+        A table that contains the rows of one table minus all the rows of another table.
+
+        #INTERSECT()
+        Returns the row intersection of two tables, retaining duplicates.
+
+        Syntax:- INTERSECT(<table_expression1>, <table_expression2>)
+
+        eg. INTERSECT(Customersingleprod,customerwithQC)
+
+        A table that contains all the rows in table_expression1 that are also in table_expression2
