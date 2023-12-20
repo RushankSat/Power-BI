@@ -462,3 +462,14 @@ Today I have started with DAX functions with Northwind Dataset
         eg. INTERSECT(Customersingleprod,customerwithQC)
 
         A table that contains all the rows in table_expression1 that are also in table_expression2
+
+20/12/2023
+        Completed 25 Day DAX Challenge
+        # DIVIDE()
+        When using the DIVIDE function, you must pass in numerator and denominator expressions. Optionally, you can pass in a value that represents an alternate result.
+
+        Syntax:- DIVIDE(<numerator>, <denominator> [,<alternateresult>])
+
+        eg. DIVIDE(femaleEmp,TotalEmp)
+
+        In 17 to 25 day use Function like CALCULATE(),FILTER(),COUNTROWS(),VAR(),TOPN() & YEAR()
